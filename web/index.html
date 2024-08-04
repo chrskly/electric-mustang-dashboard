@@ -59,25 +59,25 @@
 
             <div id="battery-status-wrapper" class="battery-subtab">
 
-                <div id="battery-status" class="battery-status">
+                <div id="battery-summary" class="battery-summary">
 
                     <!-- kWh-->
-                    <div id="battery-status-time" class="bigvalue battery-status-kwh">
+                    <div id="battery-summary-kwh" class="bigvalue">
                         <h1>18.1 kWh</h1>
                         <p>Energy Remaining</p>
                     </div>
 
                     <!-- Temperature -->
-                    <div id="battery-status-power" class="bigvalue battery-status-temperature">
+                    <div id="battery-summary-temperature" class="bigvalue">
                         <h1>21°C</h1>
                         <p>Temperature</p>
                     </div>
 
                     <!-- SOC bar -->
-                    <div id="battery-status-soc" class="battery-status-soc">
+                    <div id="battery-summary-soc">
                         <h2>State of Charge</h2>
-                        <div class="battery-soc-background">
-                            <div class="battery-soc-fill" style="width:90%"><p>90%</p></div>
+                        <div id="battery-soc-background">
+                            <div id="battery-soc-fill" style="width:90%"><p>90%</p></div>
                         </div>
                     </div>
 
@@ -266,10 +266,68 @@
             </div> <!-- end battery-status-wrapper -->
 
             <div id="battery-history-wrapper" class="hidden battery-subtab">
-                <p>History</p>
                 <!-- SoC over time -->
+                <div id="soc-over-time-graph" class="soc-over-time-graph">
+                    <table id="soc-over-time-graph-table" class="charts-css line show-heading show-labels show-5-secondary-axes show-primary-axis">
+                        <caption>State of Charge</caption>
+                        <tbody>
+                            <tr><th scope="row">60</th><td style="--start: 0.98; --end: 0.98"></td></tr>
+                            <tr><th scope="row">55</th><td style="--start: 0.98; --end: 0.96"></td></tr>
+                            <tr><th scope="row">50</th><td style="--start: 0.96; --end: 0.94"></td></tr>
+                            <tr><th scope="row">45</th><td style="--start: 0.94; --end: 0.92"></td></tr>
+                            <tr><th scope="row">40</th><td style="--start: 0.92; --end: 0.90"></td></tr>
+                            <tr><th scope="row">35</th><td style="--start: 0.90; --end: 0.88"></td></tr>
+                            <tr><th scope="row">30</th><td style="--start: 0.88; --end: 0.88"></td></tr>
+                            <tr><th scope="row">25</th><td style="--start: 0.88; --end: 0.88"></td></tr>
+                            <tr><th scope="row">20</th><td style="--start: 0.88; --end: 0.86"></td></tr>
+                            <tr><th scope="row">15</th><td style="--start: 0.86; --end: 0.86"></td></tr>
+                            <tr><th scope="row">10</th><td style="--start: 0.86; --end: 0.84"></td></tr>
+                            <tr><th scope="row">05</th><td style="--start: 0.84; --end: 0.84"></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
                 <!-- Voltage over time -->
+                <div id="voltage-over-time-graph" class="voltage-over-time-graph">
+                    <table id="voltage-over-time-graph-table" class="charts-css line show-heading show-labels show-5-secondary-axes show-primary-axis">
+                        <caption>Battery Voltage</caption>
+                        <tbody>
+                            <tr><th scope="row">60</th><td style="--start: 0.98; --end: 0.98"></td></tr>
+                            <tr><th scope="row">55</th><td style="--start: 0.98; --end: 0.96"></td></tr>
+                            <tr><th scope="row">50</th><td style="--start: 0.96; --end: 0.94"></td></tr>
+                            <tr><th scope="row">45</th><td style="--start: 0.94; --end: 0.92"></td></tr>
+                            <tr><th scope="row">40</th><td style="--start: 0.92; --end: 0.90"></td></tr>
+                            <tr><th scope="row">35</th><td style="--start: 0.90; --end: 0.88"></td></tr>
+                            <tr><th scope="row">30</th><td style="--start: 0.88; --end: 0.88"></td></tr>
+                            <tr><th scope="row">25</th><td style="--start: 0.88; --end: 0.88"></td></tr>
+                            <tr><th scope="row">20</th><td style="--start: 0.88; --end: 0.86"></td></tr>
+                            <tr><th scope="row">15</th><td style="--start: 0.86; --end: 0.86"></td></tr>
+                            <tr><th scope="row">10</th><td style="--start: 0.86; --end: 0.84"></td></tr>
+                            <tr><th scope="row">05</th><td style="--start: 0.84; --end: 0.84"></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
                 <!-- Temperature over time -->
+                <div id="temperature-over-time-graph" class="temperature-over-time-graph">
+                    <table id="temperature-over-time-graph-table" class="charts-css line show-heading show-labels show-5-secondary-axes show-primary-axis">
+                        <caption>Temperature</caption>
+                        <tbody>
+                            <tr><th scope="row">60</th><td style="--start: 0.98; --end: 0.98"></td></tr>
+                            <tr><th scope="row">55</th><td style="--start: 0.98; --end: 0.96"></td></tr>
+                            <tr><th scope="row">50</th><td style="--start: 0.96; --end: 0.94"></td></tr>
+                            <tr><th scope="row">45</th><td style="--start: 0.94; --end: 0.92"></td></tr>
+                            <tr><th scope="row">40</th><td style="--start: 0.92; --end: 0.90"></td></tr>
+                            <tr><th scope="row">35</th><td style="--start: 0.90; --end: 0.88"></td></tr>
+                            <tr><th scope="row">30</th><td style="--start: 0.88; --end: 0.88"></td></tr>
+                            <tr><th scope="row">25</th><td style="--start: 0.88; --end: 0.88"></td></tr>
+                            <tr><th scope="row">20</th><td style="--start: 0.88; --end: 0.86"></td></tr>
+                            <tr><th scope="row">15</th><td style="--start: 0.86; --end: 0.86"></td></tr>
+                            <tr><th scope="row">10</th><td style="--start: 0.86; --end: 0.84"></td></tr>
+                            <tr><th scope="row">05</th><td style="--start: 0.84; --end: 0.84"></td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div> <!-- end battery-history-wrapper -->
 
             <div id="battery-settings-wrapper" class="hidden battery-subtab">

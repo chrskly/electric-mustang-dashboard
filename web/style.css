@@ -198,7 +198,7 @@ p {
 
 /* ---------- BATTERY SUMMARY ---------- */
 
-.battery-status {
+.battery-summary {
     display: grid;
     grid-template-columns: 50% 50%;
     grid-column: 1 / span 4;
@@ -209,37 +209,39 @@ p {
     padding-bottom: 30px;
 }
 
-.battery-status-kwh {
+#battery-summary-kwh {
     grid-column: 1 / span 1;
     grid-row: 1;
 }
 
-.battery-status-temperature {
+#battery-summary-temperature {
     grid-column: 2 / span 1;
     grid-row: 1;
 }
 
-.battery-status-soc {
+#battery-summary-soc {
     margin: 30px 0 0 0;
     grid-column: 1 / 5;
     grid-row: 2;
 }
 
-.battery-status-soc h2 {
+#battery-summary-soc h2 {
     padding: 0 0 10px 0;
 }
 
-.battery-soc-background {
+#battery-soc-background {
     grid-row: 2;
     background-color: grey;
     border-radius: 20px;
     margin: 0 30px 0 30px;
 }
-.battery-soc-fill {
+
+#battery-soc-fill {
     background-color: #03C988;
     border-radius: 10px;
 }
-.battery-soc-fill p {
+
+#battery-soc-fill p {
     vertical-align: middle;
     color: white;
     font-size: 5em;
@@ -393,6 +395,65 @@ p {
     grid-row: 3;
     grid-column: 2 / span 1;
     margin-left: 20px;
+}
+
+/* ---------- Battery History Graphs ---------- */
+
+.soc-over-time-graph {
+    grid-row: 6;
+    grid-column: 1 / span 4;
+    display: grid;
+    grid-template-columns: 100%;
+    --color: #03C988;
+    margin: 0 20px 20px 0;
+    padding: 0 0 0 0;
+    width: 100%;
+}
+
+.soc-over-time-graph .line {
+    --secondary-axes-color: white;
+}
+
+.soc-over-time-graph caption {
+    font-size: 1.8em;
+}
+
+.voltage-over-time-graph {
+    grid-row: 7;
+    grid-column: 1 / span 4;
+    display: grid;
+    grid-template-columns: 100%;
+    --color: #03C988;
+    margin: 0 20px 20px 0;
+    padding: 0 0 0 0;
+    width: 100%;
+}
+
+.voltage-over-time-graph .line {
+    --secondary-axes-color: white;
+}
+
+.voltage-over-time-graph caption {
+    font-size: 1.8em;
+}
+
+.temperature-over-time-graph {
+    grid-row: 8;
+    grid-column: 1 / span 4;
+    display: grid;
+    grid-template-columns: 100%;
+    --color: #03C988;
+    margin: 0 20px 20px 0;
+    padding: 0 0 0 0;
+    width: 100%;
+}
+
+.temperature-over-time-graph .line {
+    --secondary-axes-color: white;
+}
+
+.temperature-over-time-graph caption {
+    font-size: 1.8em;
 }
 
 /* ---------- Drive Summary ---------- */

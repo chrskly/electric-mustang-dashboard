@@ -131,13 +131,13 @@ window.addEventListener('click', function(event) {
     // Voltage/temperature subtabs
     else if (id === "pack1-tab") {
         // Are we showing voltages or temperatures?
-        if ( document.querySelector('.voltage-temperature-nav-active').id === 'voltages-tab' ) {
+        if ( document.querySelector('.voltage-temperature-nav-active').id === 'cell-voltages-front' || document.querySelector('.voltage-temperature-nav-active').id === 'cell-voltages-rear') {
             showPackTab('cell-voltages-front', 'pack1-tab');
         } else {
             showPackTab('cell-temperatures-front', 'pack1-tab');
         }
     } else if ( id === "pack2-tab") {
-        if ( document.querySelector('.voltage-temperature-nav-active').id === 'voltages-tab' ) {
+        if ( document.querySelector('.voltage-temperature-nav-active').id === 'cell-voltages-front' || document.querySelector('.voltage-temperature-nav-active').id === 'cell-voltages-rear' ) {
             showPackTab('cell-voltages-rear', 'pack2-tab');
         } else {
             showPackTab('cell-temperatures-rear', 'pack2-tab');

@@ -130,26 +130,25 @@ window.addEventListener('click', function(event) {
 
     // Voltage/temperature subtabs
     else if (id === "pack1-tab") {
-        // Are we showing voltages or temperatures?
-        if ( document.querySelector('.voltage-temperature-nav-active').id === 'cell-voltages-front' || document.querySelector('.voltage-temperature-nav-active').id === 'cell-voltages-rear') {
+        if ( document.querySelector('.voltage-temperature-nav-active').id === 'voltages-tab' || document.querySelector('.voltage-temperature-nav-active').id === 'voltages-tab') {
             showPackTab('cell-voltages-front', 'pack1-tab');
         } else {
             showPackTab('cell-temperatures-front', 'pack1-tab');
         }
     } else if ( id === "pack2-tab") {
-        if ( document.querySelector('.voltage-temperature-nav-active').id === 'cell-voltages-front' || document.querySelector('.voltage-temperature-nav-active').id === 'cell-voltages-rear' ) {
+        if ( document.querySelector('.voltage-temperature-nav-active').id === 'voltages-tab' || document.querySelector('.voltage-temperature-nav-active').id === 'voltages-tab' ) {
             showPackTab('cell-voltages-rear', 'pack2-tab');
         } else {
             showPackTab('cell-temperatures-rear', 'pack2-tab');
         }
     } else if ( id === "voltages-tab" ) {
-        if ( document.querySelector('.voltage-temperature-nav-active').id === 'pack1-tab' ) {
+        if ( document.querySelector('.pack-nav-active').id === 'pack1-tab' ) {
             showVoltagesTempsTab('cell-voltages-front', 'voltages-tab');
         } else {
             showVoltagesTempsTab('cell-voltages-rear', 'voltages-tab');
         }
     } else if ( id === "temperatures-tab" ) {
-        if ( document.querySelector('.voltage-temperature-nav-active').id === 'pack1-tab' ) {
+        if ( document.querySelector('.pack-nav-active').id === 'pack1-tab' ) {
             showVoltagesTempsTab('cell-temperatures-front', 'temperatures-tab');
         } else {
             showVoltagesTempsTab('cell-temperatures-rear', 'temperatures-tab');

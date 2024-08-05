@@ -19,15 +19,32 @@
 
         <!-- STATUS -->
         <div id="status-tab" class="wrapper tab">
-            <!-- <div id="status-mode" class="grey status-title"> -->
-            <div id="stat   us-mode" class="blue status-title">
-            <!-- <div id="status-mode" class="red status-title"> -->
-                <!-- <h1>STANDBY</h1> -->
-                <h1>CHARGING</h1>
-                <!-- <h1>DRIVE</h1> -->
-                <!-- <h1>OVERHEATING</h1> -->
+
+            <div id="status-standby" class="grey status-title">
+                <h1>STANDBY</h1>
                 <p>Current Mode</p>
             </div>
+
+            <div id="status-drive" class="hidden green status-title">
+                <h1>DRIVE</h1>
+                <p>Current Mode</p>
+            </div>
+
+            <div id="status-charge" class="hidden blue status-title">
+                <h1>CHARGING</h1>
+                <p>Current Mode</p>
+            </div>
+
+            <div id="status-overheat" class="hidden red status-title">
+                <h1>OVERHEATING</h1>
+                <p>Current Mode</p>
+            </div>
+
+            <div id="status-empty" class="hidden red status-title">
+                <h1>BATTERY EMPTY</h1>
+                <p>Current Mode</p>
+            </div>
+
             <div id="status-drive" class="status-drive">
                 <h2>Drive allowed</h2>
                 <table>
@@ -51,9 +68,9 @@
 
             <div id="battery-nav" class="battery-nav">
                 <ul>
-                    <li id="battery-status-tab" class="battery-nav-button battery-nav-active" onclick="showBatteryTab('battery-status-wrapper', 'battery-status-tab')">Status</li>
-                    <li id="battery-history-tab" class="battery-nav-button" onclick="showBatteryTab('battery-history-wrapper', 'battery-history-tab')">History</li>
-                    <li id="battery-settings-tab" class="battery-nav-button" onclick="showBatteryTab('battery-settings-wrapper', 'battery-settings-tab')">Settings</li>
+                    <li id="battery-status-tab" class="battery-nav-button battery-nav-active">Status</li>
+                    <li id="battery-history-tab" class="battery-nav-button">History</li>
+                    <li id="battery-settings-tab" class="battery-nav-button">Settings</li>
                 </ul>
             </div>
 
@@ -100,22 +117,22 @@
 
                 <div id="pack-nav" class="pack-nav">
                     <ul>
-                        <li id="batt1-tab" class="nav-button charge-nav-button pack-nav-active" onclick="showBatteryTab('batt1', 'batt1-tab')">Front Battery</li>
-                        <li id="batt2-tab" class="nav-button charge-nav-button" onclick="showBatteryTab('batt2', 'batt2-tab')">Rear Battery</li>
+                        <li id="pack1-tab" class="nav-button pack-nav-button pack-nav-active">Front Pack</li>
+                        <li id="pack2-tab" class="nav-button pack-nav-button">Rear Pack</li>
                     </ul>
                 </div>
 
                 <div id="voltage-temperature-nav" class="voltage-temperature-nav">
                     <ul>
-                        <li id="voltages-tab" class="nav-button charge-nav-button voltage-temperature-nav-active" onclick="showBatteryTab('batt1', 'batt1-tab')">Voltages</li>
-                        <li id="temperatures-tab" class="nav-button charge-nav-button" onclick="showBatteryTab('batt2', 'batt2-tab')">Temperatures</li>
+                        <li id="voltages-tab" class="nav-button voltage-temperature-nav-button voltage-temperature-nav-active">Voltages</li>
+                        <li id="temperatures-tab" class="nav-button voltage-temperature-nav-button">Temperatures</li>
                     </ul>
                 </div>
 
-                <div class="cell-voltages">
+                <div id="cell-voltages-front" class="cell-voltages pack-tab">
                     <div id="cell-voltages-module-1-graph" class="cell-voltages-graph">
                         <table id="cell-voltages-module-1-graph-table" class="charts-css bar data-spacing-5 show-heading show-labels show-4-secondary-axes">
-                            <caption>Module 1</caption>
+                            <caption>Front Pack : Module 1</caption>
                             <thead><tr><th scope="col">Cell Voltages</th></tr></thead>
                             <tbody>
                                 <tr><th scope="row">3200</th><td style="--size: 0.00;"></td></tr>
@@ -140,7 +157,7 @@
 
                     <div id="cell-voltages-module-2-graph" class="cell-voltages-graph">
                         <table id="cell-voltages-module-2-graph-table" class="charts-css bar data-spacing-5 show-heading show-labels show-4-secondary-axes show-data-axes">
-                            <caption>Module 2</caption>
+                            <caption>Front Pack : Module 2</caption>
                             <thead><tr><th scope="col">Cell Voltages</th></tr></thead>
                             <tbody>
                                 <tr><th scope="row">3200</th><td style="--size: 0.00;"></td></tr>
@@ -165,7 +182,7 @@
 
                     <div id="cell-voltages-module-3-graph" class="cell-voltages-graph">
                         <table id="cell-voltages-module-3-graph-table" class="charts-css bar data-spacing-5 show-heading show-labels show-4-secondary-axes show-data-axes">
-                            <caption>Module 3</caption>
+                            <caption>Front Pack : Module 3</caption>
                             <thead><tr><th scope="col">Cell Voltages</th></tr></thead>
                             <tbody>
                                 <tr><th scope="row">3200</th><td style="--size: 0.00;"></td></tr>
@@ -190,7 +207,7 @@
 
                     <div id="cell-voltages-module-4-graph" class="cell-voltages-graph">
                         <table id="cell-voltages-module-4-graph-table" class="charts-css bar data-spacing-5 show-heading show-labels show-4-secondary-axes show-data-axes">
-                            <caption>Module 4</caption>
+                            <caption>Front Pack : Module 4</caption>
                             <thead><tr><th scope="col">Cell Voltages</th></tr></thead>
                             <tbody>
                                 <tr><th scope="row">3200</th><td style="--size: 0.00;"></td></tr>
@@ -215,7 +232,7 @@
 
                     <div id="cell-voltages-module-5-graph" class="cell-voltages-graph">
                         <table id="cell-voltages-module-5-graph-table" class="charts-css bar data-spacing-5 show-heading show-labels show-4-secondary-axes show-data-axes">
-                            <caption>Module 5</caption>
+                            <caption>Front Pack : Module 5</caption>
                             <thead><tr><th scope="col">Cell Voltages</th></tr></thead>
                             <tbody>
                                 <tr><th scope="row">3200</th><td style="--size: 0.00;"></td></tr>
@@ -240,7 +257,7 @@
 
                     <div id="cell-voltages-module-6-graph" class="cell-voltages-graph">
                         <table id="cell-voltages-module-6-graph-table" class="charts-css bar data-spacing-5 show-heading show-labels show-4-secondary-axes show-data-axes">
-                            <caption>Module 6</caption>
+                            <caption>Front Pack : Module 6</caption>
                             <thead><tr><th scope="col">Cell Voltages</th></tr></thead>
                             <tbody>
                                 <tr><th scope="row">3200</th><td style="--size: 0.00;"></td></tr>
@@ -262,7 +279,308 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </div> <!-- end cell-voltages-front -->
+
+                <div id="cell-voltages-rear" class="hidden cell-voltages pack-tab">
+                    <div id="cell-voltages-module-1-graph" class="cell-voltages-graph">
+                        <table id="cell-voltages-module-1-graph-table" class="charts-css bar data-spacing-5 show-heading show-labels show-4-secondary-axes">
+                            <caption>Rear Pack : Module 1</caption>
+                            <thead><tr><th scope="col">Cell Voltages</th></tr></thead>
+                            <tbody>
+                                <tr><th scope="row">3200</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">3210</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">3200</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">3219</th><td style="--size: 0.95;"></td></tr>
+                                <tr><th scope="row">3215</th><td style="--size: 0.75;"></td></tr>
+                                <tr><th scope="row">3217</th><td style="--size: 0.80;"></td></tr>
+                                <tr><th scope="row">3210</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">3215</th><td style="--size: 0.75;"></td></tr>
+                                <tr><th scope="row">3212</th><td style="--size: 0.70;"></td></tr>
+                                <tr><th scope="row">3211</th><td style="--size: 0.65;"></td></tr>
+                                <tr><th scope="row">3200</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">3210</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">3203</th><td style="--size: 0.05;"></td></tr>
+                                <tr><th scope="row">3220</th><td style="--size: 1.00;"></td></tr>
+                                <tr><th scope="row">3215</th><td style="--size: 0.75;"></td></tr>
+                                <tr><th scope="row">3217</th><td style="--size: 0.80;"></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="cell-voltages-module-2-graph" class="cell-voltages-graph">
+                        <table id="cell-voltages-module-2-graph-table" class="charts-css bar data-spacing-5 show-heading show-labels show-4-secondary-axes show-data-axes">
+                            <caption>Rear Pack : Module 2</caption>
+                            <thead><tr><th scope="col">Cell Voltages</th></tr></thead>
+                            <tbody>
+                                <tr><th scope="row">3200</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">3210</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">3200</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">3219</th><td style="--size: 0.95;"></td></tr>
+                                <tr><th scope="row">3215</th><td style="--size: 0.75;"></td></tr>
+                                <tr><th scope="row">3217</th><td style="--size: 0.80;"></td></tr>
+                                <tr><th scope="row">3210</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">3215</th><td style="--size: 0.75;"></td></tr>
+                                <tr><th scope="row">3212</th><td style="--size: 0.70;"></td></tr>
+                                <tr><th scope="row">3211</th><td style="--size: 0.65;"></td></tr>
+                                <tr><th scope="row">3200</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">3210</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">3203</th><td style="--size: 0.05;"></td></tr>
+                                <tr><th scope="row">3220</th><td style="--size: 1.00;"></td></tr>
+                                <tr><th scope="row">3215</th><td style="--size: 0.75;"></td></tr>
+                                <tr><th scope="row">3217</th><td style="--size: 0.80;"></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="cell-voltages-module-3-graph" class="cell-voltages-graph">
+                        <table id="cell-voltages-module-3-graph-table" class="charts-css bar data-spacing-5 show-heading show-labels show-4-secondary-axes show-data-axes">
+                            <caption>Rear Pack : Module 3</caption>
+                            <thead><tr><th scope="col">Cell Voltages</th></tr></thead>
+                            <tbody>
+                                <tr><th scope="row">3200</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">3210</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">3200</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">3219</th><td style="--size: 0.95;"></td></tr>
+                                <tr><th scope="row">3215</th><td style="--size: 0.75;"></td></tr>
+                                <tr><th scope="row">3217</th><td style="--size: 0.80;"></td></tr>
+                                <tr><th scope="row">3210</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">3215</th><td style="--size: 0.75;"></td></tr>
+                                <tr><th scope="row">3212</th><td style="--size: 0.70;"></td></tr>
+                                <tr><th scope="row">3211</th><td style="--size: 0.65;"></td></tr>
+                                <tr><th scope="row">3200</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">3210</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">3203</th><td style="--size: 0.05;"></td></tr>
+                                <tr><th scope="row">3220</th><td style="--size: 1.00;"></td></tr>
+                                <tr><th scope="row">3215</th><td style="--size: 0.75;"></td></tr>
+                                <tr><th scope="row">3217</th><td style="--size: 0.80;"></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="cell-voltages-module-4-graph" class="cell-voltages-graph">
+                        <table id="cell-voltages-module-4-graph-table" class="charts-css bar data-spacing-5 show-heading show-labels show-4-secondary-axes show-data-axes">
+                            <caption>Rear Pack : Module 4</caption>
+                            <thead><tr><th scope="col">Cell Voltages</th></tr></thead>
+                            <tbody>
+                                <tr><th scope="row">3200</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">3210</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">3200</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">3219</th><td style="--size: 0.95;"></td></tr>
+                                <tr><th scope="row">3215</th><td style="--size: 0.75;"></td></tr>
+                                <tr><th scope="row">3217</th><td style="--size: 0.80;"></td></tr>
+                                <tr><th scope="row">3210</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">3215</th><td style="--size: 0.75;"></td></tr>
+                                <tr><th scope="row">3212</th><td style="--size: 0.70;"></td></tr>
+                                <tr><th scope="row">3211</th><td style="--size: 0.65;"></td></tr>
+                                <tr><th scope="row">3200</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">3210</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">3203</th><td style="--size: 0.05;"></td></tr>
+                                <tr><th scope="row">3220</th><td style="--size: 1.00;"></td></tr>
+                                <tr><th scope="row">3215</th><td style="--size: 0.75;"></td></tr>
+                                <tr><th scope="row">3217</th><td style="--size: 0.80;"></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="cell-voltages-module-5-graph" class="cell-voltages-graph">
+                        <table id="cell-voltages-module-5-graph-table" class="charts-css bar data-spacing-5 show-heading show-labels show-4-secondary-axes show-data-axes">
+                            <caption>Rear Pack : Module 5</caption>
+                            <thead><tr><th scope="col">Cell Voltages</th></tr></thead>
+                            <tbody>
+                                <tr><th scope="row">3200</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">3210</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">3200</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">3219</th><td style="--size: 0.95;"></td></tr>
+                                <tr><th scope="row">3215</th><td style="--size: 0.75;"></td></tr>
+                                <tr><th scope="row">3217</th><td style="--size: 0.80;"></td></tr>
+                                <tr><th scope="row">3210</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">3215</th><td style="--size: 0.75;"></td></tr>
+                                <tr><th scope="row">3212</th><td style="--size: 0.70;"></td></tr>
+                                <tr><th scope="row">3211</th><td style="--size: 0.65;"></td></tr>
+                                <tr><th scope="row">3200</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">3210</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">3203</th><td style="--size: 0.05;"></td></tr>
+                                <tr><th scope="row">3220</th><td style="--size: 1.00;"></td></tr>
+                                <tr><th scope="row">3215</th><td style="--size: 0.75;"></td></tr>
+                                <tr><th scope="row">3217</th><td style="--size: 0.80;"></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="cell-voltages-module-6-graph" class="cell-voltages-graph">
+                        <table id="cell-voltages-module-6-graph-table" class="charts-css bar data-spacing-5 show-heading show-labels show-4-secondary-axes show-data-axes">
+                            <caption>Rear Pack : Module 6</caption>
+                            <thead><tr><th scope="col">Cell Voltages</th></tr></thead>
+                            <tbody>
+                                <tr><th scope="row">3200</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">3210</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">3200</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">3219</th><td style="--size: 0.95;"></td></tr>
+                                <tr><th scope="row">3215</th><td style="--size: 0.75;"></td></tr>
+                                <tr><th scope="row">3217</th><td style="--size: 0.80;"></td></tr>
+                                <tr><th scope="row">3210</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">3215</th><td style="--size: 0.75;"></td></tr>
+                                <tr><th scope="row">3212</th><td style="--size: 0.70;"></td></tr>
+                                <tr><th scope="row">3211</th><td style="--size: 0.65;"></td></tr>
+                                <tr><th scope="row">3200</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">3210</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">3203</th><td style="--size: 0.05;"></td></tr>
+                                <tr><th scope="row">3220</th><td style="--size: 1.00;"></td></tr>
+                                <tr><th scope="row">3215</th><td style="--size: 0.75;"></td></tr>
+                                <tr><th scope="row">3217</th><td style="--size: 0.80;"></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> <!-- end cell-voltages-rear -->
+
+                <div id="cell-temperatures-front" class="hidden cell-temperatures pack-tab">
+                    <div id="cell-temperatures-module-1-graph" class="cell-temperatures-graph">
+                        <table id="cell-temperatures-module-1-graph-table" class="charts-css bar data-spacing-5 show-heading show-labels show-4-secondary-axes">
+                            <caption>Front Pack : Module 1</caption>
+                            <tbody>
+                                <tr><th scope="row">25.1</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">25.0</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">24.5</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">24.9</th><td style="--size: 0.95;"></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="cell-temperatures-module-2-graph" class="cell-temperatures-graph">
+                        <table id="cell-temperatures-module-2-graph-table" class="charts-css bar data-spacing-5 show-heading show-labels show-4-secondary-axes show-data-axes">
+                            <caption>Front Pack : Module 2</caption>
+                            <tbody>
+                                <tr><th scope="row">23.6</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">23.9</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">24.0</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">23.7</th><td style="--size: 0.95;"></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="cell-temperatures-module-3-graph" class="cell-temperatures-graph">
+                        <table id="cell-temperatures-module-3-graph-table" class="charts-css bar data-spacing-5 show-heading show-labels show-4-secondary-axes show-data-axes">
+                            <caption>Front Pack : Module 3</caption>
+                            <tbody>
+                                <tr><th scope="row">25.0</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">24.3</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">24.5</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">24.0</th><td style="--size: 0.95;"></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="cell-temperatures-module-4-graph" class="cell-temperatures-graph">
+                        <table id="cell-temperatures-module-4-graph-table" class="charts-css bar data-spacing-5 show-heading show-labels show-4-secondary-axes show-data-axes">
+                            <caption>Front Pack : Module 4</caption>
+                            <tbody>
+                                <tr><th scope="row">24.0</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">24.3</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">24.0</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">24.5</th><td style="--size: 0.95;"></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="cell-temperatures-module-5-graph" class="cell-temperatures-graph">
+                        <table id="cell-temperatures-module-5-graph-table" class="charts-css bar data-spacing-5 show-heading show-labels show-4-secondary-axes show-data-axes">
+                            <caption>Front Pack : Module 5</caption>
+                            <tbody>
+                                <tr><th scope="row">24.0</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">24.7</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">24.8</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">24.9</th><td style="--size: 0.95;"></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="cell-temperatures-module-6-graph" class="cell-temperatures-graph">
+                        <table id="cell-temperatures-module-6-graph-table" class="charts-css bar data-spacing-5 show-heading show-labels show-4-secondary-axes show-data-axes">
+                            <caption>Front Pack : Module 6</caption>
+                            <tbody>
+                                <tr><th scope="row">24.5</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">24.6</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">24.4</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">24.4</th><td style="--size: 0.95;"></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> <!-- end cell-temperatures-front -->
+
+                <div id="cell-temperatures-rear" class="hidden cell-temperatures pack-tab">
+                    <div id="cell-temperatures-module-1-graph" class="cell-temperatures-graph">
+                        <table id="cell-temperatures-module-1-graph-table" class="charts-css bar data-spacing-5 show-heading show-labels show-4-secondary-axes">
+                            <caption>Rear Pack : Module 1</caption>
+                            <tbody>
+                                <tr><th scope="row">25.1</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">25.0</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">24.5</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">24.9</th><td style="--size: 0.95;"></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="cell-temperatures-module-2-graph" class="cell-temperatures-graph">
+                        <table id="cell-temperatures-module-2-graph-table" class="charts-css bar data-spacing-5 show-heading show-labels show-4-secondary-axes show-data-axes">
+                            <caption>Rear Pack : Module 2</caption>
+                            <tbody>
+                                <tr><th scope="row">23.6</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">23.9</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">24.0</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">23.7</th><td style="--size: 0.95;"></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="cell-temperatures-module-3-graph" class="cell-temperatures-graph">
+                        <table id="cell-temperatures-module-3-graph-table" class="charts-css bar data-spacing-5 show-heading show-labels show-4-secondary-axes show-data-axes">
+                            <caption>Rear Pack : Module 3</caption>
+                            <tbody>
+                                <tr><th scope="row">25.0</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">24.3</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">24.5</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">24.0</th><td style="--size: 0.95;"></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="cell-temperatures-module-4-graph" class="cell-temperatures-graph">
+                        <table id="cell-temperatures-module-4-graph-table" class="charts-css bar data-spacing-5 show-heading show-labels show-4-secondary-axes show-data-axes">
+                            <caption>Rear Pack : Module 4</caption>
+                            <tbody>
+                                <tr><th scope="row">24.0</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">24.3</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">24.0</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">24.5</th><td style="--size: 0.95;"></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="cell-temperatures-module-5-graph" class="cell-temperatures-graph">
+                        <table id="cell-temperatures-module-5-graph-table" class="charts-css bar data-spacing-5 show-heading show-labels show-4-secondary-axes show-data-axes">
+                            <caption>Rear Pack : Module 5</caption>
+                            <tbody>
+                                <tr><th scope="row">24.0</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">24.7</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">24.8</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">24.9</th><td style="--size: 0.95;"></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="cell-temperatures-module-6-graph" class="cell-temperatures-graph">
+                        <table id="cell-temperatures-module-6-graph-table" class="charts-css bar data-spacing-5 show-heading show-labels show-4-secondary-axes show-data-axes">
+                            <caption>Rear Pack : Module 6</caption>
+                            <tbody>
+                                <tr><th scope="row">24.5</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">24.6</th><td style="--size: 0.50;"></td></tr>
+                                <tr><th scope="row">24.4</th><td style="--size: 0.00;"></td></tr>
+                                <tr><th scope="row">24.4</th><td style="--size: 0.95;"></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> <!-- end cell-temperatures-rear -->
+
             </div> <!-- end battery-status-wrapper -->
 
             <div id="battery-history-wrapper" class="hidden battery-subtab">
@@ -331,8 +649,12 @@
             </div> <!-- end battery-history-wrapper -->
 
             <div id="battery-settings-wrapper" class="hidden battery-subtab">
-                <p>Settings</p>
-                <!-- max min SoC limits -->
+                <div id="setting-long-range">
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
             </div> <!-- end battery-settings-wrapper -->
 
         </div> <!-- end battery-tab -->

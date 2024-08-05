@@ -92,7 +92,6 @@ p {
     grid-column: 1 / span 4;
     grid-row: 1;
     border-radius: 10px;
-    /* border: 2px solid #222; */
     margin-bottom: 20px;
 }
 
@@ -119,7 +118,7 @@ p {
     font-size: 2.5em;
     padding-bottom: 20px;
     padding-top: 20px;
-    background-color: green;
+    background-color: 03C988;
     border-radius: 10px;
 }
 
@@ -397,6 +396,64 @@ p {
     margin-left: 20px;
 }
 
+.charts-css.show-heading caption {
+    font-size: 1.2em;
+    padding: 10px 0 10px 0;
+}
+
+/* ---------- Cell Temperatures ---------- */
+
+.cell-temperatures {
+    grid-row: 6;
+    grid-column: 1 / span 4;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    --color: #03C988;
+    margin: 0 20px 20px 0;
+    padding: 0 0 0 0;
+    width: 100%;
+}
+
+.cell-temperatures .bar {
+    --secondary-axes-color: white;
+}
+
+#cell-temperatures-module-1-graph {
+    grid-row: 1;
+    grid-column: 1 / span 1;
+    margin-right: 20px;
+}
+
+#cell-temperatures-module-2-graph {
+    grid-row: 1;
+    grid-column: 2 / span 1;
+    margin-left: 20px;
+}
+
+#cell-temperatures-module-3-graph {
+    grid-row: 2;
+    grid-column: 1 / span 1;
+    margin-right: 20px;
+}
+
+#cell-temperatures-module-4-graph {
+    grid-row: 2;
+    grid-column: 2 / span 1;
+    margin-left: 20px;
+}
+
+#cell-temperatures-module-5-graph {
+    grid-row: 3;
+    grid-column: 1 / span 1;
+    margin-right: 20px;
+}
+
+#cell-temperatures-module-6-graph {
+    grid-row: 3;
+    grid-column: 2 / span 1;
+    margin-left: 20px;
+}
+
 /* ---------- Battery History Graphs ---------- */
 
 .soc-over-time-graph {
@@ -454,6 +511,26 @@ p {
 
 .temperature-over-time-graph caption {
     font-size: 1.8em;
+}
+
+/* ---------- Battery Settings ---------- */
+
+#setting-long-range {
+    grid-column: 1 / span 4;
+    grid-row: 1;
+    padding: 10px;
+    background-color: #232D3F;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    grid-template-columns: 50% 50%;
+}
+
+#long-range-toggle-caption {
+    grid-column: 1 / span 1;
+}
+
+#long-range-toggle-toggle {
+    grid-column: 2 / span 1;
 }
 
 /* ---------- Drive Summary ---------- */

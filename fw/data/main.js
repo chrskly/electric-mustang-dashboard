@@ -93,8 +93,9 @@ function showChargeTab(tabId, buttonId) {
 
 const statuses = [ "status-standby", "status-drive", "status-charge", "status-overheat", "status-empty" ];
 let statusCounter = 0;
+let chargeCounter = 0;
 var statusInterval = window.setInterval(function() {
-    // hide all status elements
+    // rotate status
     document.querySelectorAll('.status-title').forEach(function(item) {
         item.classList.add('hidden');
     });
@@ -102,6 +103,13 @@ var statusInterval = window.setInterval(function() {
     statusCounter += 1;
     if (statusCounter >= statuses.length) {
         statusCounter = 0;
+    }
+    // charge progress
+    document.getElementById('charge-progress-bar').style.width = "" + chargeCounter + "%";
+    document.getElementById('charge-progress-bar').innerHTML = "<p>" + chargeCounter + "%</p>";
+    chargeCounter += 10;
+    if ( chargeCounter > 100 ) {
+        chargeCounter = 0;
     }
 }, 2000);
 
@@ -153,6 +161,13 @@ window.addEventListener('click', function(event) {
         } else {
             showVoltagesTempsTab('cell-temperatures-rear', 'temperatures-tab');
         }
+    }
+
+    // Charge subtabs
+    else if (id === "charge-status-tab") {
+        showChargeTab('charge-status-wrapper', 'charge-status-tab');
+    } else if (id === "charge-settings-tab") {
+        showChargeTab('charge-settings-wrapper', 'charge-settings-tab');
     }
 
 

@@ -2,7 +2,6 @@
 <head>
 <link href="chart.min.css" rel="stylesheet" type="text/css" />
 <link href="style.css" rel="stylesheet" type="text/css" />
-<link href="charts.min.css" rel="stylesheet" type="text/css" />
 <style></style>
 </head>
 <body onload="ui.onLoad()">
@@ -20,39 +19,39 @@
         <!-- STATUS -->
         <div id="status-tab" class="wrapper tab">
 
-            <div id="status-standby" class="grey status-title">
+            <div id="status-standby" class="status-title grey">
                 <h1>STANDBY</h1>
                 <p>Current Mode</p>
             </div>
 
-            <div id="status-drive" class="hidden green status-title">
+            <div id="status-drive" class="status-title green hidden">
                 <h1>DRIVE</h1>
                 <p>Current Mode</p>
             </div>
 
-            <div id="status-charge" class="hidden blue status-title">
+            <div id="status-charge" class="status-title blue hidden">
                 <h1>CHARGING</h1>
                 <p>Current Mode</p>
             </div>
 
-            <div id="status-overheat" class="hidden red status-title">
+            <div id="status-overheat" class="status-title red hidden">
                 <h1>OVERHEATING</h1>
                 <p>Current Mode</p>
             </div>
 
-            <div id="status-empty" class="hidden red status-title">
+            <div id="status-empty" class="status-title red hidden">
                 <h1>BATTERY EMPTY</h1>
                 <p>Current Mode</p>
             </div>
 
-            <div id="status-drive" class="status-drive">
+            <div id="status-drive-allowed">
                 <h2>Drive allowed</h2>
                 <table>
                     <tr><td>Battery Empty</td><td>No</td></tr>
                     <tr><td>Battery Too Hot</td><td>Yes</td></tr>
                 </table>
             </div>
-            <div id="status-charge" class="status-charge">
+            <div id="status-charge-allowed">
                 <h2>Charge not allowed</h2>
                 <table>
                     <tr><td>Battery Full</td><td>No</td></tr>
@@ -109,7 +108,7 @@
                         <h2>20 mV</h2>
                         <p>Delta</p>
                     </div>
-                    <div id="cell-voltages-maximum" class="bigvalue battery-status-voltages-">
+                    <div id="cell-voltages-maximum" class="bigvalue battery-status-voltages-max">
                         <h2>3220 mV</h2>
                         <p>Maximum</p>
                     </div>
@@ -587,7 +586,7 @@
                 <!-- SoC over time -->
                 <div id="soc-over-time-graph" class="soc-over-time-graph">
                     <table id="soc-over-time-graph-table" class="charts-css line show-heading show-labels show-5-secondary-axes show-primary-axis">
-                        <caption>State of Charge</caption>
+                        <h2>State of Charge</h2>
                         <tbody>
                             <tr><th scope="row">60</th><td style="--start: 0.98; --end: 0.98"></td></tr>
                             <tr><th scope="row">55</th><td style="--start: 0.98; --end: 0.96"></td></tr>
@@ -608,7 +607,7 @@
                 <!-- Voltage over time -->
                 <div id="voltage-over-time-graph" class="voltage-over-time-graph">
                     <table id="voltage-over-time-graph-table" class="charts-css line show-heading show-labels show-5-secondary-axes show-primary-axis">
-                        <caption>Battery Voltage</caption>
+                        <h2>Battery Voltage</h2>
                         <tbody>
                             <tr><th scope="row">60</th><td style="--start: 0.98; --end: 0.98"></td></tr>
                             <tr><th scope="row">55</th><td style="--start: 0.98; --end: 0.96"></td></tr>
@@ -629,7 +628,7 @@
                 <!-- Temperature over time -->
                 <div id="temperature-over-time-graph" class="temperature-over-time-graph">
                     <table id="temperature-over-time-graph-table" class="charts-css line show-heading show-labels show-5-secondary-axes show-primary-axis">
-                        <caption>Temperature</caption>
+                        <h2>Temperature</h2>
                         <tbody>
                             <tr><th scope="row">60</th><td style="--start: 0.98; --end: 0.98"></td></tr>
                             <tr><th scope="row">55</th><td style="--start: 0.98; --end: 0.96"></td></tr>
@@ -713,95 +712,94 @@
 
             <div id="charge-nav" class="charge-nav">
                 <ul>
-                    <li id="chademo-tab" class="nav-button charge-nav-button charge-nav-active" onclick="showChargeTab('chademo', 'chademo-tab')">CHAdeMO</li>
-                    <li id="ccs-tab" class="nav-button charge-nav-button" onclick="showChargeTab('ccs', 'ccs-tab')">CCS</li>
+                    <li id="charge-status-tab" class="nav-button charge-nav-button charge-nav-active">Status</li>
+                    <li id="charge-history-tab" class="nav-button charge-nav-button">History</li>
+                    <li id="charge-settings-tab" class="nav-button charge-nav-button">Settings</li>
                 </ul>
             </div>
 
-            <div id="chademo" class="charge-tab chademo-status">
-                <div id="chademo-status-time" class="bigvalue chademo-status-time">
-                    <h1>17 min</h1>
-                    <p>Time Remaining</p>
-                </div>
-                <div id="chademo-status-power" class="bigvalue chademo-status-power">
-                    <h1>30 kW</h1>
-                    <p>Charge Power</p>
-                </div>
-                <div id="chademo-status-progress" class="chademo-status-progress">
-                    <h2>Charging Progress</h2>
-                    <div class="charge-progress-background">
-                        <div class="charge-progress-fill" style="width:45%"><p>45%</p></div>
+            <div id="charge-status-wrapper" class="charge-tab charge-status">
+
+                <!-- charge status -->
+                <div class="charge-status-summary">
+                    <div class="bigvalue charge-status-time">
+                        <h1 id="charge-status-time-remaining">17 min</h1>
+                        <p>Time Remaining</p>
                     </div>
-                </div>
-                <div class="chademo-status-table">
-                    <table>
-                        <tr><td>Status</td><td>Energy transfer</td></tr>
-                        <tr><td>Current</td><td>65 A</td></tr>
-                        <tr><td>Time elapsed</td><td>23 mins</td></tr>
-                        <tr><td>Max Voltage</td><td>375 V</td></tr>
-                        <tr><td>Energy delivered</td><td>2.4kWh</td></tr>
-                    </table>
-                </div>
-                <div class="chademo-status-graph">
-                    <table id="chademo-status-graph-table" class="charts-css column hide-data show-labels show-primary-axis show-4-secondary-axes data-spacing-1">
-                        <thead><tr><th scope="col">Power</th></tr></thead>
-                        <tbody>
-                            <tr><th scope="row">5</th><td style="--start: 0.05; --end: 0.1; --color: #166fb7"><span class="data">5</span></td></tr>
-                            <tr><th scope="row">10</th><td style="--size: 0.1;--color: #166fb7"><span class="data">10</span></td></tr>
-                            <tr><th scope="row">15</th><td style="--size: 0.15; --color: #166fb7"><span class="data">15</span></td></tr>
-                            <tr><th scope="row">20</th><td style="--size: 0.20; --color: #166fb7"><span class="data">20</span></td></tr>
-                            <tr><th scope="row">25</th><td style="--size: 0.25; --color: #166fb7"><span class="data">25</span></td></tr>
-                            <tr><th scope="row">30</th><td style="--size: 0.30; --color: #166fb7"><span class="data">30</span></td></tr>
-                            <tr><th scope="row">35</th><td style="--size: 0.35; --color: #166fb7"><span class="data">35</span></td></tr>
-                            <tr><th scope="row">40</th><td style="--size: 0.40; --color: #166fb7"><span class="data">40</span></td></tr>
-                            <tr><th scope="row">45</th><td style="--size: 0.45; --color: #166fb7"><span class="data">45</span></td></tr>
-                            <tr><th scope="row">47</th><td style="--size: 0.47; --color: #166fb7"><span class="data">47</span></td></tr>
-                            <tr><th scope="row">46</th><td style="--size: 0.46; --color: #166fb7"><span class="data">46</span></td></tr>
-                            <tr><th scope="row">49</th><td style="--size: 0.49; --color: #166fb7"><span class="data">49</span></td></tr>
-                            <tr><th scope="row">45</th><td style="--size: 0.45; --color: #166fb7"><span class="data">45</span></td></tr>
-                            <tr><th scope="row">46</th><td style="--size: 0.46; --color: #166fb7"><span class="data">46</span></td></tr>
-                            <tr><th scope="row">47</th><td style="--size: 0.47; --color: #166fb7"><span class="data">47</span></td></tr>
-                            <tr><th scope="row">46</th><td style="--size: 0.46; --color: #166fb7"><span class="data">46</span></td></tr>
-                            <tr><th scope="row">40</th><td style="--size: 0.40; --color: #166fb7"><span class="data">40</span></td></tr>
-                            <tr><th scope="row">30</th><td style="--size: 0.30; --color: #166fb7"><span class="data">30</span></td></tr>
-                            <tr><th scope="row">20</th><td style="--size: 0.20; --color: #166fb7"><span class="data">20</span></td></tr>
-                            <tr><th scope="row">10</th><td style="--size: 0.10; --color: #166fb7"><span class="data">10</span></td></tr>
-                            <tr><th scope="row">5</th><td style="--size: 0.05; --color: #166fb7"><span class="data">5</span></td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div id="chademo-status-stop" class="chademo-status-stop">
+                    <div class="bigvalue charge-status-power">
+                        <h1 id="charge-status-power">30 kW</h1>
+                        <p>Charge Power</p>
+                    </div>
+                    <div class="charge-status-progress">
+                        <h2>Charging Progress</h2>
+                        <div class="charge-progress-background">
+                            <div id="charge-progress-bar" class="charge-progress-fill" style="width:45%"><p>45%</p></div>
+                        </div>
+                    </div>
+                    <div class="charge-status-table">
+                        <table>
+                            <tr><td>Status</td><td id="charge-status-status">Energy transfer</td></tr>
+                            <tr><td>Current</td><td id="charge-status-current">65 A</td></tr>
+                            <tr><td>Time elapsed</td><td id="charge-status-time-elapsed">23 mins</td></tr>
+                            <tr><td>Max Voltage</td><td id="charge-status-max-voltage">375 V</td></tr>
+                            <tr><td>Energy delivered</td><td id="charge-status-energy-delivered">2.4kWh</td></tr>
+                        </table>
+                    </div>
+                </div> <!-- end charge-status-summary -->
+
+                <div id="charge-status-stop" class="charge-status-stop">
                     <button class="button" role="button">Stop charging</button>
                 </div>
             </div>
+            <!-- end charge status -->
 
-            <div id="ccs" class="charge-tab ccs-status hidden">
-                <div id="ccs-status-power" class="bigvalue ccs-status-power">
-                    <h1>0 kW</h1>
-                    <p>Charge Power</p>
-                </div>
-                <div id="ccs-status-time" class="bigvalue ccs-status-time">
-                    <h1>&infin; min</h1>
-                    <p>Time Remaining</p>
-                </div>
-                <div id="ccs-status-progress" class="ccs-status-progress">
-                    <h2>Charging Progress</h2>
-                    <div class="charge-progress-background">
-                        <div class="charge-progress-fill" style="width:45%"><p>45%</p></div>
-                    </div>
-                </div>
-                <div class="ccs-status-table">
-                    <table>
-                        <tr><td>Status</td><td>Energy transfer</td></tr>
-                        <tr><td>Current</td><td>65 A</td></tr>
-                        <tr><td>Time elapsed</td><td>23 mins</td></tr>
-                        <tr><td>Max Voltage</td><td>375 V</td></tr>
-                        <tr><td>Energy delivered</td><td>2.4kWh</td></tr>
+            <!-- charge history -->
+            <div id="charge-history-wrapper" class="charge-tab charge-history hidden">
+                <div class="charge-status-graph">
+                    <table id="charge-status-graph-table" class="charts-css column  show-labels show-primary-axis show-4-secondary-axes data-spacing-5">
+                        <thead><tr><th scope="col">Power</th></tr></thead>
+                        <tbody>
+                            <tr><th scope="row"> 5</th><td style="--size: 0.10;"><span class="data">5</span></td></tr>
+                            <tr><th scope="row">10</th><td style="--size: 0.20;"><span class="data">10</span></td></tr>
+                            <tr><th scope="row">15</th><td style="--size: 0.30;"><span class="data">15</span></td></tr>
+                            <tr><th scope="row">20</th><td style="--size: 0.40;"><span class="data">20</span></td></tr>
+                            <tr><th scope="row">25</th><td style="--size: 0.50;"><span class="data">25</span></td></tr>
+                            <tr><th scope="row">30</th><td style="--size: 0.60;"><span class="data">30</span></td></tr>
+                            <tr><th scope="row">35</th><td style="--size: 0.70;"><span class="data">35</span></td></tr>
+                            <tr><th scope="row">40</th><td style="--size: 0.80;"><span class="data">40</span></td></tr>
+                            <tr><th scope="row">45</th><td style="--size: 0.90;"><span class="data">45</span></td></tr>
+                            <tr><th scope="row">47</th><td style="--size: 0.94;"><span class="data">47</span></td></tr>
+                            <tr><th scope="row">46</th><td style="--size: 0.92;"><span class="data">46</span></td></tr>
+                            <tr><th scope="row">49</th><td style="--size: 0.98;"><span class="data">49</span></td></tr>
+                            <tr><th scope="row">45</th><td style="--size: 0.90;"><span class="data">45</span></td></tr>
+                            <tr><th scope="row">46</th><td style="--size: 0.92;"><span class="data">46</span></td></tr>
+                            <tr><th scope="row">47</th><td style="--size: 0.94;"><span class="data">47</span></td></tr>
+                            <tr><th scope="row">46</th><td style="--size: 0.92;"><span class="data">46</span></td></tr>
+                            <tr><th scope="row">40</th><td style="--size: 0.80;"><span class="data">40</span></td></tr>
+                            <tr><th scope="row">30</th><td style="--size: 0.60;"><span class="data">30</span></td></tr>
+                            <tr><th scope="row">20</th><td style="--size: 0.40;"><span class="data">20</span></td></tr>
+                            <tr><th scope="row">10</th><td style="--size: 0.20;"><span class="data">10</span></td></tr>
+                            <tr><th scope="row"> 5</th><td style="--size: 0.10;"><span class="data"> 5</span></td></tr>
+                        </tbody>
                     </table>
                 </div>
-                <div id="ccs-status-stop" class="ccs-status-stop">
-                    <button class="button" role="button">Stop charging</button>
+            </div>
+            <!-- end charge history -->
+
+            <div id="charge-settings-wrapper" class="charge-tab charge-settings hidden">
+                <div id="charge-settings-charge-limit" class="charge-settings-charge-limit">
+                    <h2>Charge Limit</h2>
+                    <input class="charge-settings-charge-limit-slider" type="range" id="charge-limit-slider" name="charge-limit-slider" min="50" max="100" value="80" oninput="this.nextElementSibling.value = this.value">
                 </div>
+                <!--
+                <div id="charge-settings-">
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                    <p>Scheduled Charging</p>
+                </div>
+            -->
             </div>
 
         </div>
@@ -820,4 +818,5 @@
 
 </body>
 <script src="main.js" type="text/javascript"></script>
+<script src="chart.min.js"></script>
 </html>

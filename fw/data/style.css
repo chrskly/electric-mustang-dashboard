@@ -1,3 +1,30 @@
+
+/* variables */
+:root {
+    /*
+    --background-color: #a2b8d2;
+    --secondary-background-color: #5c6b8a;
+    --nav-highlight-color: #f07838;
+    --progress-fill-color: #138B54;
+    --text-primary-color: #FFF;
+    --text-secondary-color: #e63746;
+    --text-dimmed-color: #4e2a5b;
+    */
+
+    --background-color: #512B81;
+    --secondary-background-color: #232D3F;
+    /*--nav-highlight-color: #f07838;*/
+    --nav-highlight-color: #434D5F;
+    --progress-fill-color: #138B54;
+    --text-primary-color: #FFF;
+    --text-secondary-color: #e63746;
+    --text-dimmed-color: grey;
+    --progress-bar-background-color: #BBB;
+
+    --green: #138B54;
+
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -9,16 +36,16 @@ html {
 }
 
 body {
-    background-color: #512B81;
+    background-color: var(--background-color);
     max-width: 100%;
     margin: 0 auto;
     font-family: Arial, Helvetica, sans-serif;
-    color: white;
+    color: var(--text-primary-color);
 }
 
 table {
     width: 100%;
-    background-color: #232D3F;
+    background-color: var(--secondary-background-color);
     color: white;
     border-collapse: collapse;
     margin: 0;
@@ -48,7 +75,7 @@ p {
 }
 
 .grey {
-    background-color: #434D5F;
+    background-color: var(--secondary-background-color);
 }
 
 .green {
@@ -76,8 +103,8 @@ p {
 /* layout */
 
 .content {
-    margin: 20px;
-    /* width: 100%; */
+    padding:0;
+    margin: 20px 20px 20px 20px;
 }
 
 .wrapper {
@@ -86,7 +113,7 @@ p {
     grid-template-columns: 25% 25% 25% 25%;
 }
 
-/* status */
+/*---- status ----*/
 
 .status-title {
     grid-column: 1 / span 4;
@@ -96,8 +123,9 @@ p {
 }
 
 .status-title h1 {
-    padding-top: 20px;
+    padding-top: 10px;
     letter-spacing: 4px;
+    border-radius: 20px;
 }
 
 .status-title p {
@@ -105,32 +133,42 @@ p {
     color: black;
 }
 
-.status-drive {
+.status-standby {
+    grid-column: 1 / span 4;
+    grid-row: 2;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* drive/charge allowed */
+
+#status-drive-allowed {
     grid-column: 1 / span 2;
     grid-row: 2;
-    background-color: #232D3F;
+    background-color: var(--secondary-background-color);
     border-radius: 10px;
     margin-right: 10px;
 }
 
-.status-drive h2 {
+#status-drive-allowed h2 {
     margin: 0 0 20px 0;
     font-size: 2.5em;
     padding-bottom: 20px;
     padding-top: 20px;
-    background-color: 03C988;
+    background-color: var(--green);
     border-radius: 10px;
 }
 
-.status-charge {
+#status-charge-allowed {
     grid-column: 3 / span 2;
     grid-row: 2;
-    background-color: #232D3F;
+    background-color: var(--secondary-background-color);
     border-radius: 10px;
     margin-left: 10px;
 }
 
-.status-charge h2 {
+#status-charge-allowed h2 {
     margin: 0 0 20px 0;
     font-size: 2.5em;
     padding-bottom: 20px;
@@ -139,12 +177,16 @@ p {
     border-radius: 10px;
 }
 
+#status-charge-allowed table {
+    margin: 0px 20px 0px 20px;
+}
+
 /* ---------- Battery Nav ---------- */
 
 .battery-nav {
     grid-column: 1 / span 4;
     grid-row: 1;
-    background-color: #232D3F;
+    background-color: var(--secondary-background-color);
     border-radius: 10px;
     padding: 10px;
     margin: 0 0 20px 0;
@@ -168,30 +210,27 @@ p {
 }
 
 .battery-nav-active {
-    background-color: #434D5F;
+    background-color: var(--nav-highlight-color);
     border-radius: 10px;
 }
 
-/* ---------- Battery wrapper ---------- */
+/* ---------- Battery wrappers ---------- */
 
 #battery-status-wrapper {
     grid-column: 1 / span 4;
     grid-row: 2;
-    /* display: grid; */
     grid-template-columns: 100%;
 }
 
 #battery-history-wrapper {
     grid-column: 1 / span 4;
     grid-row: 2;
-    /* display: grid; */
     grid-template-columns: 100%;
 }
 
 #battery-settings-wrapper {
     grid-column: 1 / span 4;
     grid-row: 2;
-    /* display: grid; */
     grid-template-columns: 100%;
 }
 
@@ -202,10 +241,11 @@ p {
     grid-template-columns: 50% 50%;
     grid-column: 1 / span 4;
     grid-row: 2;
-    background-color: #232D3F;
+    background-color: var(--secondary-background-color);
     border-radius: 10px;
     margin-bottom: 20px;
     padding-bottom: 30px;
+    color: var(--text-primary-color);
 }
 
 #battery-summary-kwh {
@@ -213,9 +253,17 @@ p {
     grid-row: 1;
 }
 
+#battery-summary-kwh p {
+    color: var(--text-dimmed-color);
+}
+
 #battery-summary-temperature {
     grid-column: 2 / span 1;
     grid-row: 1;
+}
+
+#battery-summary-temperature p {
+    color: var(--text-dimmed-color);
 }
 
 #battery-summary-soc {
@@ -230,14 +278,15 @@ p {
 
 #battery-soc-background {
     grid-row: 2;
-    background-color: grey;
+    background-color: var(--progress-bar-background-color);
     border-radius: 20px;
+    border: 1px solid grey;
     margin: 0 30px 0 30px;
 }
 
 #battery-soc-fill {
-    background-color: #03C988;
-    border-radius: 10px;
+    background-color: var(--green);
+    border-radius: 20px;
 }
 
 #battery-soc-fill p {
@@ -256,10 +305,11 @@ p {
     grid-template-columns: 33% 33% 33%;
     display: grid;
     grid-row: 3;
-    background-color: #232D3F;
+    background-color: var(--secondary-background-color);
     border-radius: 10px;
     padding: 10px 0 30px 0;
     margin: 0 0 20px 0;
+    color: var(--text-primary-color);
 }
 
 .battery-status-voltages-min {
@@ -267,9 +317,17 @@ p {
     grid-row: 1;
 }
 
+.battery-status-voltages-min p {
+    color: var(--text-dimmed-color);
+}
+
 .battery-status-voltages-delta {
     grid-column: 2 / span 1;
     grid-row: 1;
+}
+
+.battery-status-voltages-delta p {
+    color: var(--text-dimmed-color);
 }
 
 .battery-status-voltages-max {
@@ -277,12 +335,16 @@ p {
     grid-row: 1;
 }
 
+.battery-status-voltages-max p {
+    color: var(--text-dimmed-color);
+}
+
 /* ---------- Battery Pack Nav & Voltages/Temperatures Nav ---------- */
 
 .pack-nav {
     grid-column: 1 / span 4;
     grid-row: 4;
-    background-color: #232D3F;
+    background-color: var(--secondary-background-color);
     border-radius: 10px;
     padding: 10px;
     margin: 0 0 20px 0;
@@ -306,7 +368,7 @@ p {
 }
 
 .pack-nav-active {
-    background-color: #434D5F;
+    background-color: var(--nav-highlight-color);
     border-radius: 10px;
 }
 
@@ -314,7 +376,7 @@ p {
 .voltage-temperature-nav {
     grid-column: 1 / span 4;
     grid-row: 5;
-    background-color: #232D3F;
+    background-color: var(--secondary-background-color);
     border-radius: 10px;
     padding: 10px;
     margin: 0 0 50px 0;
@@ -338,7 +400,7 @@ p {
 }
 
 .voltage-temperature-nav-active {
-    background-color: #434D5F;
+    background-color: var(--nav-highlight-color);
     border-radius: 10px;
 }
 
@@ -350,7 +412,7 @@ p {
     grid-column: 1 / span 4;
     display: grid;
     grid-template-columns: 50% 50%;
-    --color: #03C988;
+    --color: var(--green);
     margin: 0 20px 20px 0;
     padding: 0 0 0 0;
     width: 100%;
@@ -408,7 +470,7 @@ p {
     grid-column: 1 / span 4;
     display: grid;
     grid-template-columns: 50% 50%;
-    --color: #03C988;
+    --color: var(--green);
     margin: 0 20px 20px 0;
     padding: 0 0 0 0;
     width: 100%;
@@ -461,18 +523,21 @@ p {
     grid-column: 1 / span 4;
     display: grid;
     grid-template-columns: 100%;
-    --color: #03C988;
+    --color: var(--green);
     margin: 0 20px 20px 0;
     padding: 0 0 0 0;
     width: 100%;
+    background-color: var(--secondary-background-color);
+    border-radius: 10px;
 }
 
 .soc-over-time-graph .line {
     --secondary-axes-color: white;
 }
 
-.soc-over-time-graph caption {
-    font-size: 1.8em;
+.soc-over-time-graph h2 {
+    font-size: 2.8em;
+    padding: 10px 0 20px 0;
 }
 
 .voltage-over-time-graph {
@@ -480,18 +545,21 @@ p {
     grid-column: 1 / span 4;
     display: grid;
     grid-template-columns: 100%;
-    --color: #03C988;
+    --color: var(--green);
     margin: 0 20px 20px 0;
     padding: 0 0 0 0;
     width: 100%;
+    background-color: var(--secondary-background-color);
+    border-radius: 10px;
 }
 
 .voltage-over-time-graph .line {
     --secondary-axes-color: white;
 }
 
-.voltage-over-time-graph caption {
-    font-size: 1.8em;
+.voltage-over-time-graph h2 {
+    font-size: 2.8em;
+    padding: 10px 0 20px 0;
 }
 
 .temperature-over-time-graph {
@@ -499,18 +567,21 @@ p {
     grid-column: 1 / span 4;
     display: grid;
     grid-template-columns: 100%;
-    --color: #03C988;
+    --color: var(--green);
     margin: 0 20px 20px 0;
     padding: 0 0 0 0;
     width: 100%;
+    background-color: var(--secondary-background-color);
+    border-radius: 10px;
 }
 
 .temperature-over-time-graph .line {
     --secondary-axes-color: white;
 }
 
-.temperature-over-time-graph caption {
-    font-size: 1.8em;
+.temperature-over-time-graph h2 {
+    font-size: 2.8em;
+    padding: 10px 0 20px 0;
 }
 
 /* ---------- Battery Settings ---------- */
@@ -519,7 +590,7 @@ p {
     grid-column: 1 / span 4;
     grid-row: 1;
     padding: 10px;
-    background-color: #232D3F;
+    background-color: var(--secondary-background-color);
     border-radius: 10px;
     margin-bottom: 10px;
     grid-template-columns: 50% 50%;
@@ -541,7 +612,7 @@ p {
     grid-column: 1 / span 4;
     grid-row: 1;
     padding: 10px 0 40px 0;
-    background-color: #232D3F;
+    background-color: var(--secondary-background-color);
     border-radius: 10px;
     margin-bottom: 10px;
     justify-items: center;
@@ -554,6 +625,7 @@ p {
 
 .drive-status-range h1 {
     padding-top: 10px;
+    color: var(--text-primary-color);
 }
 
 .drive-status-whkm {
@@ -574,7 +646,7 @@ p {
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 20px;
-    --color: #03C988;
+    --color: var(--green);
     color: white;
 }
 
@@ -602,7 +674,7 @@ p {
 .charge-nav {
     grid-column: 1 / span 4;
     grid-row: 2;
-    background-color: #232D3F;
+    background-color: var(--secondary-background-color);
     border-radius: 10px;
     padding: 10px;
     margin: 0 0 20px 0;
@@ -617,7 +689,7 @@ p {
 
 .charge-nav li {
     float: left;
-    width: 50%;
+    width: 33%;
     text-align: center;
     font-size: 2.8em;
     font-weight: 700;
@@ -626,167 +698,145 @@ p {
 }
 
 
-/* ---------- Chademo status ---------- */
+/* ---------- charge status ---------- */
 
-.chademo-status {
+.charge-status {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-column: 1 / span 4;
+    grid-row: 3;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.charge-status-summary {
+    grid-column: 1 / span 4;
+    grid-row: 1;
+    padding: 10px;
+    background-color: var(--secondary-background-color);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    grid-template-columns: 25% 25% 25% 25%;
+    display: grid;
+}
+
+.charge-status-power {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+}
+
+.charge-status-time {
+    grid-column: 3 / span 2;
+    grid-row: 1;
+}
+
+.charge-status-progress {
+    grid-column: 1 / span 4;
+    grid-row: 2;
+}
+
+.charge-status-progress h2 {
+    padding: 0 0 10px 0;
+}
+
+.charge-status-table {
+    grid-column: 1 / span 4;
+    grid-row: 3;
+    padding: 20px;
+}
+
+.charge-status-table table {
+    margin: 20px 0 0 0;
+}
+
+.charge-status-graph {
+    grid-column: 1 / span 4;
+    grid-row: 4;
+    --color: var(--green);
+    overflow-x: auto;
+    grid-auto-flow: column;
+    display: grid;
+    width: 1600px; 
+}
+
+.charge-status-graph .column {
+    --secondary-axes-color: white;
+    --labels-size: 4em;
+}
+
+#charge-status-graph-table {
+    width: 1600px;
+}
+
+.charge-status-stop {
+    grid-column: 1 / span 4;
+    grid-row: 5;
+    padding: 10px 0 0 0;
+}
+
+/* ---------- charge settings ---------- */
+
+.charge-settings {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
     grid-column: 1 / span 4;
     grid-row: 3;
     padding: 10px;
-    background-color: #232D3F;
+    background-color: var(--secondary-background-color);
     border-radius: 10px;
     margin-bottom: 10px;
 }
 
-.chademo-status-power {
-    grid-column: 1 / span 2;
-    grid-row: 1;
-}
-
-.chademo-status-time {
-    grid-column: 3 / span 2;
-    grid-row: 1;
-}
-
-.chademo-status-progress {
+.charge-settings-charge-limit {
     grid-column: 1 / span 4;
-    grid-row: 2;
 }
 
-.chademo-status-table {
-    grid-column: 1 / span 4;
-    grid-row: 3;
-    padding: 20px;
+.charge-settings-charge-limit-slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 100px; /* Specified height */
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
 }
 
-.chademo-status-table table {
-    margin: 20px 0 0 0;
+
+/* Mouse-over effects */
+.charge-settings-charge-limit-slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
 }
 
-.chademo-status-graph {
-    grid-column: 1 / span 4;
-    grid-row: 4;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    margin-bottom: 10px;
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.charge-settings-charge-limit-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 100px; /* Set a specific slider handle width */
+  height: 100px; /* Slider handle height */
+  background: #04AA6D; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.charge-settings-charge-limit-slider::-moz-range-thumb {
+  width: 100px; /* Set a specific slider handle width */
+  height: 100px; /* Slider handle height */
+  background: #04AA6D; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+/* */
+
+.charge-progress-background {
+    background-color: var(--progress-bar-background-color);
+    border-radius: 20px;
     margin: 0 20px 0 20px;
 }
 
-#chademo-status-graph-table tbody th {
-    color: black;
-}
-
-.chademo-status-stop {
-    grid-column: 1 / span 4;
-    grid-row: 5;
-    padding: 20px;
-}
-
-.ccs-status {
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-column: 1 / span 4;
-    grid-row: 3;
-    padding: 10px;
-    background-color: #232D3F;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-.ccs-status-time {
-    grid-column: 3 / span 2;
-    grid-row: 1;
-}
-
-.ccs-status-power {
-    grid-column: 1 / span 2;
-    grid-row: 1;
-}
-
-.ccs-status-progress {
-    grid-column: 1 / span 4;
-    grid-row: 2;
-}
-
-.ccs-status-table {
-    grid-column: 1 / span 4;
-    grid-row: 4;
-    padding: 20px;
-}
-
-.ccs-status-table table {
-    margin: 20px 0 0 0;
-
-}
-
-.ccs-status-stop {
-    grid-column: 1 / span 4;
-    grid-row: 5;
-    padding: 20px;
-}
-
-.charge-status-container {
-    border-radius: 10px;
-    padding: 10px;
-    background-color: #232D3F;
-    margin: 10px 0 0 0;
-}
-
-.charge-status-container h1 {
-    padding: 5px 0 5px 0;
-    font-weight: 700;
-}
-
-.charge-status-container p {
-    padding: 2px 0 5px 0;
-}
-
-.charge-status-container td {
-    border-left: 1px solid #940B92;
-    margin: auto;
-    text-align: center;
-    width: 50%;
-}
-
-.charge-status-container td:first-child {
-    border-left: none;
-}
-
-.charge-status-time-container {
-    float:left;
-    width: 50%;
-    padding: 20px 0 20px 0;
-}
-
-.charge-status-time-container h1 {
-    padding: 0;
-    font-size: 0.8em;
-    color: grey;
-}
-
-.charge-status-power-container {
-    float:left;
-    width: 45%;
-    margin: 20px 0 20px 0;
-    border-left: 1px solid grey;
-}
-
-.charge-status-power-container h1 {
-    font-size: 0.8em;
-    color: grey;
-}
-
-.charge-progress-background {
-    background-color: grey;
-    border-radius: 5px;
-    margin: 0 30px 0 30px;
-}
-
 .charge-progress-fill {
-    background-color: #03C988;
-    border-radius: 5px;
+    background-color: var(--green);
+    border-radius: 20px;
 }
 
 .charge-progress-fill p {
@@ -799,7 +849,7 @@ p {
 /* layout */
 
 .nav {
-    background-color: #232D3F;
+    background-color: var(--secondary-background-color);
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 20px;
@@ -823,7 +873,7 @@ p {
 }
 
 .nav-active {
-    background-color: #434D5F;
+    background-color: var(--nav-highlight-color);
     border-radius: 10px;
 }
 
@@ -832,7 +882,7 @@ p {
 }
 
 .charge-nav-active {
-    background-color: #434D5F;
+    background-color: var(--nav-highlight-color);
     border-radius: 10px;
 }
 
@@ -902,7 +952,7 @@ input:checked + .slider:before {
 .battery-voltages {
     border-radius: 10px;
     padding: 10px;
-    background-color: #232D3F;
+    background-color: var(--secondary-background-color);
     margin: 0px 0 10px 0;
 }
 
@@ -922,7 +972,7 @@ input:checked + .slider:before {
 .battery-voltage-bar {
     float: left;
     width:1%;
-    background-color: #03C988;
+    background-color: var(--green);
     margin-bottom:0;
     bottom:0;
     border-right:1px solid white;
@@ -932,7 +982,7 @@ input:checked + .slider:before {
 .table-container {
     border-radius: 10px;
     padding: 10px;
-    background-color: #232D3F;
+    background-color: var(--secondary-background-color);
 }
 
 .table-container tr {
